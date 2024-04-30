@@ -1,4 +1,4 @@
-module DebtorMonitoringSystem
+module github.com/Ravgus/DebtorMonitoringSystem
 
 go 1.22
 

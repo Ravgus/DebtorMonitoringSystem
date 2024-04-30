@@ -22,7 +22,7 @@ func SendEmail(body string) {
 		os.Getenv("SMTP_PASSWORD"),
 	)
 	if err := dialer.DialAndSend(m); err != nil {
-		fmt.Print("Can't send email:", err)
+		fmt.Println("Can't send email:", err)
 		os.Exit(3)
 	}
 }

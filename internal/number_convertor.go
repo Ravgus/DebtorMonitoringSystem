@@ -9,7 +9,7 @@ import (
 func StringToInt(data string) int {
 	result, err := strconv.Atoi(data)
 	if err != nil {
-		fmt.Print("Can't parse string to int!")
+		fmt.Println("Can't parse string to int!")
 		os.Exit(1)
 	}
 

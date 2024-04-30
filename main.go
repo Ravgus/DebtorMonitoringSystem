@@ -1,10 +1,10 @@
 package main
 
 import (
-	"DebtorMonitoringSystem/internal"
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/Ravgus/DebtorMonitoringSystem/internal"
 	"github.com/joho/godotenv"
 	"io"
 	"net/http"
@@ -18,11 +18,7 @@ func main() {
 		return
 	}
 
-	birthDate := os.Getenv("BIRTH_DATE")
-	if !internal.IsCorrectDate(birthDate) {
-		fmt.Println("BIRTH_DATE is incorrect .env:", err)
-		return
-	}
+	internal.ValidateEnvData()
 
 	requestBody := map[string]interface{}{
 		"searchType": "1",
@@ -31,10 +27,10 @@ func main() {
 			"LastName":     os.Getenv("LAST_NAME"),
 			"FirstName":    os.Getenv("FIRST_NAME"),
 			"MiddleName":   os.Getenv("MIDDLE_NAME"),
-			"BirthDate":    internal.DateConvert(birthDate),
+			"BirthDate":    internal.DateConvert(os.Getenv("BIRTH_DATE")),
 			"IdentCode":    "",
 			"categoryCode": "",
-			"BirthDateV":   birthDate,
+			"BirthDateV":   os.Getenv("BIRTH_DATE"),
 		},
 	}
 

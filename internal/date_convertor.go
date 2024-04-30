@@ -11,7 +11,7 @@ func DateConvert(date string) string {
 	newDate, err := time.Parse(layout, date)
 
 	if err != nil {
-		fmt.Print("Can't convert date!")
+		fmt.Println("Can't convert date!")
 		os.Exit(0)
 	}
 
