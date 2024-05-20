@@ -5,18 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Ravgus/DebtorMonitoringSystem/internal"
-	"github.com/joho/godotenv"
 	"io"
 	"net/http"
 	"os"
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Println("Cannot load data from .env:", err)
-		return
-	}
+	internal.LoadEnv()
 
 	internal.ValidateEnvData()
 
