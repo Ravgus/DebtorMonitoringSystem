@@ -29,6 +29,7 @@ func SendEmail(body string) {
 
 func CreateEmailBody(responseObject Response) string {
 	response := "<html><body>"
+	response += "<h1>" + os.Getenv("LAST_NAME") + " " + os.Getenv("FIRST_NAME") + " " + os.Getenv("MIDDLE_NAME") + "</h1>"
 	response += "<p>" + "Кількість боргів: " + IntToString(responseObject.Rows)
 	response += "<br>"
 
