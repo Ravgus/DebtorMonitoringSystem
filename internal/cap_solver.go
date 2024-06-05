@@ -1,0 +1,26 @@
+package internal
+
+import (
+	"fmt"
+	capsolver_go "github.com/capsolver/capsolver-go"
+	"os"
+)
+
+func SolveCap() string {
+	capSolver := capsolver_go.CapSolver{ApiKey: os.Getenv("CAP_SOLVER_API_KEY")}
+
+	s, err := capSolver.Solve(
+		map[string]any{
+			"type":       "ReCaptchaV3TaskProxyLess",
+			"websiteURL": "https://erb.minjust.gov.ua",
+			"websiteKey": "6LevzOUUAAAAAGjAekCNws95tBDm5m69m5LT4L7X",
+			"pageAction": "search_person",
+		})
+
+	if err != nil {
+		fmt.Println("Error during solving the captcha!")
+		os.Exit(7)
+	}
+
+	return s.Solution.GRecaptchaResponse
+}

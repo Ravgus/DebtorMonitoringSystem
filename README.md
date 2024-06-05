@@ -15,3 +15,5 @@ SMTP_USER_NAME=ivan@gmail.com
 SMTP_PASSWORD=password
 SMTP_PORT=587
 ```
+
+Також вам треба вказати Api Key з capsolver.com в CAP_SOLVER_API_KEY, для того щоб скрипт міг успішно вирішити капчу.

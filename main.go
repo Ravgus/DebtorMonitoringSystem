@@ -15,6 +15,7 @@ func main() {
 
 	internal.ValidateEnvData()
 
+	captcha := internal.SolveCap()
 	requestBody := map[string]interface{}{
 		"searchType": "1",
 		"paging":     "1",
@@ -27,6 +28,7 @@ func main() {
 			"categoryCode": "",
 			"BirthDateV":   os.Getenv("BIRTH_DATE"),
 		},
+		"reCaptchaToken": captcha,
 	}
 
 	jsonValue, err := json.Marshal(requestBody)
