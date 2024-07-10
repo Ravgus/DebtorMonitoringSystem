@@ -12,7 +12,7 @@ func ValidateEnvData() {
 		return
 	}
 
-	fields := [7]string{
+	fields := [8]string{
 		"LAST_NAME",
 		"FIRST_NAME",
 		"MIDDLE_NAME",
@@ -20,6 +20,7 @@ func ValidateEnvData() {
 		"SMTP_USER_NAME",
 		"SMTP_PASSWORD",
 		"SMTP_PORT",
+		"CAP_SOLVER_API_KEY",
 	}
 
 	for i := 0; i < len(fields); i++ {

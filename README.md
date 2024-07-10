@@ -17,3 +17,9 @@ SMTP_PORT=587
 ```
 
 Також вам треба вказати Api Key з capsolver.com в CAP_SOLVER_API_KEY, для того щоб скрипт міг успішно вирішити капчу.
+
+Опціонально, ви можете вказати Proxy для роботи з capsolver.com в PROXY в форматі:
+
+```env
+PROXY=ip:port:username:password
+```

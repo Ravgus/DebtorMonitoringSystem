@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/Ravgus/DebtorMonitoringSystem/internal"
 	"io"
-	"net/http"
 	"os"
 )
 
@@ -37,7 +36,7 @@ func main() {
 		return
 	}
 
-	response, err := http.Post("https://erb.minjust.gov.ua/listDebtorsEndpoint", "application/json", bytes.NewBuffer(jsonValue))
+	response, err := internal.GetHttpClient().Post("https://erb.minjust.gov.ua/listDebtorsEndpoint", "application/json", bytes.NewBuffer(jsonValue))
 	if err != nil {
 		fmt.Println("Cannot reach ministry:", err)
 		return
