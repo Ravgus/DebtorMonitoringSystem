@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func SolveCap() string {
+func SolveCap() (string, string) {
 	capSolver := capsolver_go.CapSolver{ApiKey: os.Getenv("CAP_SOLVER_API_KEY")}
 
 	proxy := os.Getenv("PROXY")
@@ -30,5 +30,5 @@ func SolveCap() string {
 		os.Exit(7)
 	}
 
-	return s.Solution.GRecaptchaResponse
+	return s.Solution.GRecaptchaResponse, s.Solution.UserAgent
 }

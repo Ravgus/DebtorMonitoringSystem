@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/Ravgus/DebtorMonitoringSystem/internal"
 	"io"
+	"net/http"
 	"os"
 )
 
@@ -14,7 +15,7 @@ func main() {
 
 	internal.ValidateEnvData()
 
-	captcha := internal.SolveCap()
+	captcha, userAgent := internal.SolveCap()
 	requestBody := map[string]interface{}{
 		"searchType": "1",
 		"paging":     "1",
@@ -36,7 +37,16 @@ func main() {
 		return
 	}
 
-	response, err := internal.GetHttpClient().Post("https://erb.minjust.gov.ua/listDebtorsEndpoint", "application/json", bytes.NewBuffer(jsonValue))
+	req, err := http.NewRequest("POST", "https://erb.minjust.gov.ua/listDebtorsEndpoint", bytes.NewBuffer(jsonValue))
+	if err != nil {
+		fmt.Println("Error creating request: %v\n", err)
+		return
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("User-Agent", userAgent)
+
+	response, err := internal.GetHttpClient().Do(req)
 	if err != nil {
 		fmt.Println("Cannot reach ministry:", err)
 		return
