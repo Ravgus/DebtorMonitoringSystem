@@ -11,6 +11,8 @@ import (
 )
 
 func main() {
+	defer fmt.Printf("Launch time: %v\n", internal.GetCurrentDateTime())
+
 	internal.LoadEnv()
 
 	internal.ValidateEnvData()

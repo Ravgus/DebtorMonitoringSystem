@@ -17,6 +17,11 @@ func DateConvert(date string) string {
 
 	return newDate.UTC().Format("2006-01-02T00:00:00.000Z")
 }
+
+func GetCurrentDateTime() string {
+	return time.Now().Format("2006-01-02 00:00:00")
+}
+
 func IsCorrectDate(date string) bool {
 	layout := "02.01.2006"
 
